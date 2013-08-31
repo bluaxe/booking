@@ -1,0 +1,29 @@
+<div >
+<%= label_tag :Place_Name %>
+<%= @place.name%>
+<br />
+<%= label_tag :phone%>
+<%= @place.phone%>
+<br />
+<%= label_tag :info%>
+<%= @place.info%>
+<br />
+</div >
+
+<hr />
+
+<%= render partial:'room/room' ,collection: @rooms %>
+
+<div >
+<h3>Add Room </h3>
+<%= form_for @room, url:{controller: "room",action: "create"} do |f| %>
+	<%= hidden_field_tag(:place_id, @place.id) %>
+	<%= f.label :name %>
+	<%= f.text_field :name %>
+	<br />
+	<%= f.label :info%>
+	<%= f.text_field :info%>
+	<br />
+	<%= f.submit "Add" %>
+<% end %>
+</div>

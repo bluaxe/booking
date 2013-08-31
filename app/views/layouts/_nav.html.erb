@@ -1,0 +1,14 @@
+<div >
+<%= link_to 'Index',:root %>
+<% if !session[:login] %>
+	<%= link_to 'login',:login %>
+	<%= link_to 'Register',:register%>
+<% else %>
+	<%= link_to 'All',:dump%>
+	<%= link_to 'Place Manage',:placemanage %>
+	<%= session[:user_name] %>
+	<%= link_to 'Logout',:logout%>
+<% end %>
+</div >
+
+<hr />
