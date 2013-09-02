@@ -1,6 +1,9 @@
 <h1><%= @place.name %></h1>
+<%= debug(@rooms) %>
 <table>
+	<% @rooms.each do |r| %>
         <tr>
-                <td></td>
+                <td><%= r.name %> </td>
         </tr>
+	<% end %>
 </table>
