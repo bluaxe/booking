@@ -1,6 +1,7 @@
 class OrderController < ApplicationController
 	before_action :find_user, only: [:new,:create,:destroy]
 	before_action :find_order, only: [:destroy]
+
 	def index
 	end	
 
@@ -12,7 +13,8 @@ class OrderController < ApplicationController
 	def create
 		@order = @user.orders.new(order_param)	
 		if @order.save
-			redirect_to root_url
+			@room = Room.find(@order.room_id)
+			redirect_to '/p/'+@room.place_id.to_s
 		end
 	end
 
@@ -27,7 +29,11 @@ private
 	end
 
 	def find_user
-		@user = User.find(session[:uid])
+		if session[:login]!=1 
+			redirect_to login_url
+		else 
+			@user = User.find(session[:uid])
+		end	
 	end
 
 	def find_order
