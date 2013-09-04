@@ -1,6 +1,5 @@
-<h1>Home index</h1>
 <% @places.each do |f| %>
-	<div>
+	<div class="span1" >
 	<%= link_to f.name,'/p/'+f.id.to_s %>
 	</div>
 <% end %>

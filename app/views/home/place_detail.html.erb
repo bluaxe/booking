@@ -1,5 +1,11 @@
+<% content_for :left_bar do %>
+	<ul class="nav nav-tabs nav-stacked">
+	<% @places.each do |p| %>
+		<li><%= link_to p.name,'/p/'+p.id.to_s  %></li>		
+	<% end %>
+	</ul>
+<% end %>
 <h1><%= @place.name %></h1>
-<%= debug(@rooms) %>
 <table>
 	<% @rooms.each do |r| %>
         <tr>

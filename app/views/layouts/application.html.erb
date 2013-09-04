@@ -2,16 +2,24 @@
 <html>
 <head>
   <title>Demo</title>
+  <meta name="viewport" content="width=device-width,initial-scale=1.0" >
   <%= stylesheet_link_tag    "application", media: "all", "data-turbolinks-track" => true %>
   <%= javascript_include_tag "application", "data-turbolinks-track" => true %>
   <%= csrf_meta_tags %>
 </head>
 <body>
-<div id="body">
-<%= render 'layouts/nav' %>
 
-<%= yield %>
-
+<div class="container-fluid">
+	<div class="row-fluid">
+		<%= render 'layouts/nav' %>
+		<div class="span2">
+			<%= yield :left_bar %>
+		</div>
+		<div class="span9">
+			<%= yield %>
+		</div>
+	</div>
 </div>
+
 </body>
 </html>

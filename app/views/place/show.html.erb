@@ -1,11 +1,13 @@
+<% content_for :left_bar do %>
+		<ul class="nav nav-tabs nav-stacked">
+			<% @places.each do |p| %>
+			<li><%= link_to p.name,'/place/'+p.id.to_s %></li>
+			<% end %>
+		</ul>
+<% end %>
 <div >
-<%= label_tag :Place_Name %>
-<%= @place.name%>
-<br />
-<%= label_tag :phone%>
+<h1><%= @place.name%></h1>
 <%= @place.phone%>
-<br />
-<%= label_tag :info%>
 <%= @place.info%>
 <br />
 </div >
@@ -14,7 +16,8 @@
 
 <%= render partial:'room/room' ,collection: @rooms %>
 
-<div >
+
+<div class="span12">
 <h3>Add Room </h3>
 <%= form_for @room, url:{controller: "room",action: "create"} do |f| %>
 	<%= hidden_field_tag(:place_id, @place.id) %>

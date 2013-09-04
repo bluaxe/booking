@@ -27,6 +27,7 @@ class PlaceController < ApplicationController
 
 	def show
 		@place = Place.find(params[:id])
+		@places = Place.find_all_by_user_id(session[:uid])
 		@room = Room.new
 		@rooms = @place.rooms.all
 		#@rooms = Room.all

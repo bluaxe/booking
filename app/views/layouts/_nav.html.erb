@@ -1,14 +1,16 @@
-<div >
-<%= link_to 'Index',:root %>
-<% if !session[:login] %>
-	<%= link_to 'login',:login %>
-	<%= link_to 'Register',:register%>
-<% else %>
-	<%= link_to 'All',:dump%>
-	<%= link_to 'Place Manage',:placemanage %>
-	<%= session[:user_name] %>
-	<%= link_to 'Logout',:logout%>
-<% end %>
+<div class="navbar">
+<div class="navbar-inner">
+	<ul class="nav">
+	<li ><%= link_to 'Index',:root %></li>
+	<% if !session[:login] %>
+		<li><%= link_to 'login',:login %></li>		
+		<li><%= link_to 'Register',:register%></li>
+	<% else %>
+		<li><%= link_to 'Place Manage',:placemanage %></li>
+		<li><%= link_to session[:user_name],'/user/'+session[:uid].to_s %></li>
+		<li><%= link_to 'Logout',:logout%></li>
+	<% end %>
+	</ul>
+</div>
 </div >
 
-<hr />

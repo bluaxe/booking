@@ -1,15 +1,10 @@
-<div >
-<%= label_tag :name %>
+<div class="span3" >
 <%= place.name%>
-<br />
-<%= label_tag :phone%>
 <%= place.phone%>
-<br />
-<%= label_tag :info%>
 <%= place.info%>
+<br />
 <br />
 <%= link_to "Manage", place %>
 <br />
 <%= link_to "Delete", place, {method: :delete} %>
 </div >
-<br />

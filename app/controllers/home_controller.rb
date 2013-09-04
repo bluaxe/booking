@@ -5,6 +5,7 @@ class HomeController < ApplicationController
 
 	def place_detail
 		@place = Place.find(params[:id])
+		@places = Place.all
 		@rooms = @place.rooms.all
 	end
 end
