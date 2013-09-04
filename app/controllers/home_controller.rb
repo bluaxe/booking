@@ -8,4 +8,5 @@ class HomeController < ApplicationController
 		@places = Place.all
 		@rooms = @place.rooms.all
 	end
+	
 end

@@ -1,2 +1,25 @@
-<%= debug(@user) %>
-<%= render partial: 'user', object: @user %>
+<!--%= render partial: 'user', object: @user %-->
+<h1>My Orders</h1>
+<table class="table">
+	<tr>
+			<th>Place</th>
+			<th>Room</th>
+			<th>Date</th>
+			<th>Time</th>
+			<th>Info</th>
+			<th>Status</th>
+			<th></th>
+	</tr>		
+	<% @orders.each do |o| %>
+	<tr>
+		<% info = @order_info.pop %>
+		<td><%= info.fetch(0) %></td>	
+		<td><%= info.fetch(1) %></td>	
+		<td><%= o.date %></td>
+		<td><%= o.time %></td>
+		<td><%= o.info %></td>
+		<td><%= o.allowed %></td>
+		<td><%= link_to "Del", :controller => "order", :action => "destroy" , :id => o.id %></td>
+	</tr>
+	<% end -%>
+</table>

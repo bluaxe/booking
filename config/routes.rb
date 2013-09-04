@@ -16,6 +16,10 @@ post '/timetable' ,to: 'time_table#update'
 
 get '/p/:id/', to: 'home#place_detail'
 
+get '/order/new', to: 'order#new'
+get '/order/destroy/:id', to: 'order#destroy'
+post '/order/create', to: 'order#create'
+
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 

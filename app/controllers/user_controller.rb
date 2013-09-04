@@ -34,6 +34,14 @@ class UserController < ApplicationController
 	end
 	
 	def show
+		@orders = @user.orders.all
+		@order_info = Array.new	
+		@orders.each do |o|
+			room = Room.find(o.room_id)	
+			place = Place.find(room.place_id)
+			@order_info.push(Array[place.name,room.name])
+		end
+		@order_info.reverse!
 	end
 
 	def dump

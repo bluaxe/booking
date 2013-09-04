@@ -1,15 +1,48 @@
 <% content_for :left_bar do %>
-	<ul class="nav nav-tabs nav-stacked">
+<ul class="nav nav-tabs nav-stacked">
 	<% @places.each do |p| %>
-		<li><%= link_to p.name,'/p/'+p.id.to_s  %></li>		
+	<li><%= link_to p.name,'/p/'+p.id.to_s  %></li>		
 	<% end %>
-	</ul>
+</ul>
 <% end %>
+
 <h1><%= @place.name %></h1>
-<table>
+<table class="table">
+	<tr>
+		<th> Room</th>
+		<th> 1</th>
+		<th> 2</th>
+		<th> 3</th>
+		<th> 4</th>
+		<th> 5</th>
+		<th> 6</th>
+		<th> 7</th>
+		<th> 8</th>
+		<th> 9</th>
+		<th> 10</th>
+		<th> 11</th>
+		<th> 12</th>
+		<th> 13</th>
+		<th> 14</th>
+		<th> 15</th>
+		<th> 16</th>
+		<th> 17</th>
+		<th> 18</th>
+		<th> 19</th>
+		<th> 20</th>
+		<th> 21</th>
+		<th> 22</th>
+		<th> 23</th>
+		<th> 24</th>
+		<th> 25</th>
+		<th> 26</th>
+		<th> 27</th>
+		<th> 28</th>
+	</tr>
 	<% @rooms.each do |r| %>
-        <tr>
-                <td><%= r.name %> </td>
-        </tr>
+	<tr>
+		<td><%= r.name %> </td>
+		<td><%= link_to "new", :controller => "order", :action => "new", :id => r.id %></td>
+	</tr>
 	<% end %>
 </table>
