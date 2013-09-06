@@ -19,7 +19,9 @@ class HomeController < ApplicationController
 			@order_jar[r.id]={}
 			@orders = r.orders.find_all_by_date(@time)
 			@orders.each do |o|
-				@order_jar[r.id][o.time]=1
+				for i in o.start_time..o.end_time do
+					@order_jar[r.id][i]=1
+				end
 			end
 		end
 

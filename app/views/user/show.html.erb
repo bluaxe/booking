@@ -5,7 +5,8 @@
 			<th>Place</th>
 			<th>Room</th>
 			<th>Date</th>
-			<th>Time</th>
+			<th>Start Time</th>
+			<th>End Time</th>
 			<th>Info</th>
 			<th>Status</th>
 			<th></th>
@@ -16,7 +17,8 @@
 		<td><%= info.fetch(0) %></td>	
 		<td><%= info.fetch(1) %></td>	
 		<td><%= o.date %></td>
-		<td><%= o.time %></td>
+		<td><%= o.start_time %></td>
+		<td><%= o.end_time %></td>
 		<td><%= o.info %></td>
 		<td><%= o.allowed %></td>
 		<td><%= link_to "Del", :controller => "order", :action => "destroy" , :id => o.id %></td>

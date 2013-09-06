@@ -1,4 +1,5 @@
 class OrderController < ApplicationController
+
 	before_action :find_user, only: [:new,:create,:destroy]
 	before_action :find_order, only: [:destroy]
 
@@ -12,9 +13,26 @@ class OrderController < ApplicationController
 
 	def create
 		@order = @user.orders.new(order_param)	
-		if @order.save
+
+		if !(@order.start_time < @order.end_time) 
+			flash.now[:msg]="time error"
+		else
 			@room = Room.find(@order.room_id)
-			redirect_to '/p/'+@room.place_id.to_s
+			@time_table = @room.time_table
+
+			@week = Time.parse(@order.date).strftime('%a').to_s
+			@st = @time_table[@week+'_b']
+			@et = @time_table[@week+'_e']
+
+			if !(@st <= @order.start_time && @et >=@order.end_time)
+				flash.now[:msg]="time not in range"
+			else
+				if @order.save
+					@room = Room.find(@order.room_id)
+					redirect_to '/p/'+@room.place_id.to_s
+				end
+			end
+
 		end
 	end
 
@@ -25,7 +43,7 @@ class OrderController < ApplicationController
 
 private
 	def order_param
-		params.require(:order).permit(:room_id,:date,:time,:info)
+		params.require(:order).permit(:room_id,:date,:start_time,:end_time,:info)
 	end
 
 	def find_user
