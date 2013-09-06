@@ -1,36 +1,54 @@
+<% content_for :left_bar do %>
+<ul class="nav nav-tabs nav-stacked">
+        <% @rooms.each do |r| %>
+        <li><%= link_to r.name,'/room/'+r.id.to_s %></li> 
+        <% end -%>
+</ul>
+<% end -%>
+
 <%= form_tag('/timetable', method: "post") do %>
 <%= hidden_field_tag(:id,time.id) %>
-<table>
+<table class="table table-bordered">
         <tr>
                 <td></td>
-                <td>Mon</td>
-                <td>Tue</td>
-                <td>Wen</td>
-                <td>Thu</td>
-                <td>Fri</td>
-                <td>Sat</td>
-                <td>Sun</td>
-        </tr>
-        <tr>
                 <td>Start</td>
-                <td><%= text_field_tag(:Mon_b,time.Mon_b) %></td>
-                <td><%= text_field_tag(:Tue_b,time.Tue_b) %></td>
-                <td><%= text_field_tag(:Wen_b,time.Wen_b) %></td>
-                <td><%= text_field_tag(:Thu_b,time.Thu_b) %></td>
-                <td><%= text_field_tag(:Fri_b,time.Fri_b) %></td>
-                <td><%= text_field_tag(:Sat_b,time.Sat_b) %></td>
-                <td><%= text_field_tag(:Sun_b,time.Sun_b) %></td>
+                <td>End</td>
         </tr>
         <tr>
-                <td>End</td>
+                <td>Mon</td>
+                <td><%= text_field_tag(:Mon_b,time.Mon_b) %></td>
                 <td><%= text_field_tag(:Mon_e,time.Mon_e) %></td>
+        </tr>
+        <tr>
+                <td>Tue</td>
+                <td><%= text_field_tag(:Tue_b,time.Tue_b) %></td>
                 <td><%= text_field_tag(:Tue_e,time.Tue_e) %></td>
-                <td><%= text_field_tag(:Wen_e,time.Wen_e) %></td>
+        </tr>
+        <tr>
+                <td>Wed</td>
+                <td><%= text_field_tag(:Wed_b,time.Wed_b) %></td>
+                <td><%= text_field_tag(:Wed_e,time.Wed_e) %></td>
+        </tr>
+        <tr>
+                <td>Thu</td>
+                <td><%= text_field_tag(:Thu_b,time.Thu_b) %></td>
                 <td><%= text_field_tag(:Thu_e,time.Thu_e) %></td>
+        </tr>
+        <tr>
+                <td>Fri</td>
+                <td><%= text_field_tag(:Fri_b,time.Fri_b) %></td>
                 <td><%= text_field_tag(:Fri_e,time.Fri_e) %></td>
+        </tr>
+        <tr>
+                <td>Sat</td>
+                <td><%= text_field_tag(:Sat_b,time.Sat_b) %></td>
                 <td><%= text_field_tag(:Sat_e,time.Sat_e) %></td>
+        </tr>
+        <tr>
+                <td>Sun</td>
+                <td><%= text_field_tag(:Sun_b,time.Sun_b) %></td>
                 <td><%= text_field_tag(:Sun_e,time.Sun_e) %></td>
         </tr>
 </table>
-<%= submit_tag('Update') %>
+<%= submit_tag 'Update',class: "btn" %>
 <% end %>

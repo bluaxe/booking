@@ -19,6 +19,8 @@ class RoomController < ApplicationController
 
 	def show
 		@time = TimeTable.find_by_room_id(@room.id)		
+		@place = Place.find(@room.place_id)
+		@rooms = @place.rooms
 	end
 
 private

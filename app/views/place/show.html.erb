@@ -1,15 +1,15 @@
 <% content_for :left_bar do %>
-		<ul class="nav nav-tabs nav-stacked">
-			<% @places.each do |p| %>
-			<li><%= link_to p.name,'/place/'+p.id.to_s %></li>
-			<% end %>
-		</ul>
+<ul class="nav nav-tabs nav-stacked">
+	<% @places.each do |p| %>
+	<li><%= link_to p.name,'/place/'+p.id.to_s %></li>
+	<% end %>
+</ul>
 <% end %>
 <div >
-<h1><%= @place.name%></h1>
-<%= @place.phone%>
-<%= @place.info%>
-<br />
+	<h1><%= @place.name%></h1>
+	<%= @place.phone%>
+	<%= @place.info%>
+	<br />
 </div >
 
 <hr />
@@ -18,8 +18,8 @@
 
 
 <div class="span12">
-<h3>Add Room </h3>
-<%= form_for @room, url:{controller: "room",action: "create"} do |f| %>
+	<h3>Add Room </h3>
+	<%= form_for @room, url:{controller: "room",action: "create"} do |f| %>
 	<%= hidden_field_tag(:place_id, @place.id) %>
 	<%= f.label :name %>
 	<%= f.text_field :name %>
@@ -28,5 +28,5 @@
 	<%= f.text_field :info%>
 	<br />
 	<%= f.submit "Add" %>
-<% end %>
+	<% end %>
 </div>
