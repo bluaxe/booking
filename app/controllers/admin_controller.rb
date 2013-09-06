@@ -6,6 +6,9 @@ class AdminController < ApplicationController
 
 	def grant
 		@user = User.find(params[:id])
+		if @user.admin == nil 
+			@user.admin = 1
+		end
 		@user.admin = 1-@user.admin
 		@user.save
 		redirect_to admin_url
