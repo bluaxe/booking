@@ -14,9 +14,11 @@ class OrderController < ApplicationController
 	def create
 		@order = @user.orders.new(order_param)	
 
+		#check if start time less than end time
 		if !(@order.start_time < @order.end_time) 
 			flash.now[:msg]="time error"
 		else
+			# check if the given time in the serve time of this room
 			@room = Room.find(@order.room_id)
 			@time_table = @room.time_table
 
@@ -27,9 +29,22 @@ class OrderController < ApplicationController
 			if !(@st <= @order.start_time && @et >=@order.end_time)
 				flash.now[:msg]="time not in range"
 			else
-				if @order.save
-					@room = Room.find(@order.room_id)
-					redirect_to '/p/'+@room.place_id.to_s
+				#Check if the required time available
+				@orders = Order.where(room_id:@order.room_id,date:@order.date)
+				@dup = false
+				@orders.each do |o|
+					if !(@order.end_time < o.start_time || @order.start_time > o.end_time)
+						@dup = true
+					end
+				end
+				if @dup 
+					flash.now[:msg]="Sorry, this room has been ordered at the time you give us"
+				else
+					#OK
+					if @order.save
+						@room = Room.find(@order.room_id)
+						redirect_to '/p/'+@room.place_id.to_s
+					end
 				end
 			end
 
