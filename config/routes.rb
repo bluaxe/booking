@@ -15,6 +15,7 @@ resources :place,:room
 post '/timetable' ,to: 'time_table#update'
 
 get '/p/:id/', to: 'home#place_detail'
+post '/p/:id/', to: 'home#place_detail'
 
 get '/order/new', to: 'order#new'
 get '/order/destroy/:id', to: 'order#destroy'
