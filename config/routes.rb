@@ -5,7 +5,6 @@ get '/register' , to: 'user#new'
 get '/logout' , to: 'user#logout'
 get '/login' , to: 'user#login'
 post '/login' , to: 'user#login'
-get '/dump' , to: 'user#dump'
 
 resources :user
 
@@ -20,6 +19,9 @@ post '/p/:id/', to: 'home#place_detail'
 get '/order/new', to: 'order#new'
 get '/order/destroy/:id', to: 'order#destroy'
 post '/order/create', to: 'order#create'
+
+get '/admin' , to: 'admin#index'
+get '/admin/grant/:id', to: 'admin#grant'
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

@@ -18,12 +18,18 @@ class UserController < ApplicationController
 	def login
 		if request.post? 
 			@user = User.find_by_user_name(params[:user_name])
-			if @user.user_pwd == params[:user_pwd] 
-				session[:login]=1
-				session[:user_name] = @user.user_name
-				session[:uid] = @user.id
-			else 
-				flash.now[:pwd_wrong]=1
+			if @user == nil 
+				flash.now[:msg]='user '+params[:user_name]+' doesn\'t exists'
+			else
+				if @user.user_pwd != params[:user_pwd] 
+					flash.now[:msg]= 'password wrong'
+				else 
+					session[:login]=1
+					session[:user_name] = @user.user_name
+					session[:uid] = @user.id
+					session[:admin] = @user.admin
+					redirect_to '/user/'+@user.id.to_s
+				end
 			end
 		end
 	end
@@ -44,13 +50,9 @@ class UserController < ApplicationController
 		@order_info.reverse!
 	end
 
-	def dump
-		@users = User.all
-	end
-
 	def destroy
 		@user.destroy
-		redirect_to :dump
+		redirect_to root_url 
 	end
 
 private

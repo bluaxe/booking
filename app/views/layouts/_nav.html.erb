@@ -6,7 +6,10 @@
 		<li><%= link_to 'login',:login %></li>		
 		<li><%= link_to 'Register',:register%></li>
 	<% else %>
-		<li><%= link_to 'Place Manage',:placemanage %></li>
+		<% if session[:admin]==1 %>
+		<li> <%= link_to 'Place Manage',:placemanage %> </li>
+		<li><%= link_to 'Admin', '/admin' %></li>
+		<% end -%>
 		<li><%= link_to session[:user_name],'/user/'+session[:uid].to_s %></li>
 		<li><%= link_to 'Logout',:logout%></li>
 	<% end %>

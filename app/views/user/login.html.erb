@@ -1,7 +1,7 @@
 <% if session[:login] %>
 		<h1> <%= session[:user_name] %></h1>
-<% else if flash[:pwd_wrong] %>
-	<h1> password wrong  </h1>
+<% else if flash[:msg] %>
+	<h1><%= flash[:msg] %></h1>
 	<% else %>
 		<%= form_tag('/login',method: "post") do %>
 			<%= label_tag :user_name %>

@@ -1,0 +1,25 @@
+<%= form_tag('/admin',method: "post") do %>
+<table class="table table-bordered">
+	<tr>
+		<td>User</td>
+		<td>Email</td>
+		<td>Pwd</td>
+		<td>Admin</td>
+		<td>Verified</td>
+		<td></td>
+	</tr>
+	<% @users.each do |u| %>	
+	<tr>
+		<td><%= u.user_name%></td>
+		<td><%= u.user_mail%></td>
+		<td><%= u.user_pwd%></td>
+		<td>
+			<%= u.admin%>
+			<%= link_to "Grant", '/admin/grant/'+u.id.to_s %>
+		</td>
+		<td><%= u.verified%></td>
+		<td> <%= link_to "Delete", user_url(u.id), method: :delete ,data:{confirm: "Are you sure ?"} %> </td>
+	</tr>
+	<% end -%>
+</table>
+<% end -%>	
