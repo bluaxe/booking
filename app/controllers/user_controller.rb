@@ -1,5 +1,5 @@
 class UserController < ApplicationController
-	before_action :find_user , only: [:show, :destroy]
+	before_action :find_user , only: [:show, :destroy, :send_mail]
 
 	def new 
 		@user = User.new
@@ -12,7 +12,7 @@ class UserController < ApplicationController
 		else 
 			flash[:reg]=0
 		end
-
+		redirect_to '/user/'+@user.id.to_s
 	end
 	
 	def login
@@ -53,6 +53,11 @@ class UserController < ApplicationController
 	def destroy
 		@user.destroy
 		redirect_to root_url 
+	end
+
+	def send_mail
+		UserMailer.welcome_email(@user).deliver
+		redirect_to '/user/'+@user.id.to_s
 	end
 
 private
