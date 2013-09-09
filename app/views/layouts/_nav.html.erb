@@ -1,19 +1,20 @@
-<div class="navbar navbar-inverse">
-<div class="navbar-inner">
-	<ul class="nav">
-	<li ><%= link_to 'Index',:root %></li>
-	<% if !session[:login] %>
-		<li><%= link_to 'login',:login %></li>		
-		<li><%= link_to 'Register',:register%></li>
-	<% else %>
-		<% if session[:admin]==1 %>
-		<li> <%= link_to 'Place Manage',:placemanage %> </li>
-		<li><%= link_to 'Admin', '/admin' %></li>
-		<% end -%>
-		<li><%= link_to session[:user_name],'/user/'+session[:uid].to_s %></li>
-		<li><%= link_to 'Logout',:logout%></li>
-	<% end %>
-	</ul>
-</div>
+<div class="navbar navbar-inverse navbar-fixed-top">
+	<div class="navbar-inner">
+		<ul class="nav">
+			<li class="active" id="nav_brand" ><a href="#" class="brand" >Demo</a></li>
+			<li ><%= link_to 'Index',:root %></li>
+			<% if !session[:login] %>
+			<li><%= link_to 'login',:login %></li>		
+			<li><%= link_to 'Register',:register%></li>
+			<% else %>
+			<% if session[:admin]==1 %>
+			<li> <%= link_to 'Place Manage',:placemanage %> </li>
+			<li><%= link_to 'Admin', '/admin' %></li>
+			<% end -%>
+			<li><%= link_to session[:user_name],'/user/'+session[:uid].to_s %></li>
+			<li><%= link_to 'Logout',:logout%></li>
+			<% end %>
+		</ul>
+	</div>
 </div >
 

@@ -3,6 +3,7 @@ class UserController < ApplicationController
 
 	def new 
 		@user = User.new
+		render layout: "center"
 	end
 
 	def create 
@@ -37,6 +38,8 @@ class UserController < ApplicationController
 					redirect_to '/user/'+@user.id.to_s
 				end
 			end
+		else
+			render layout: "center"
 		end
 	end
 

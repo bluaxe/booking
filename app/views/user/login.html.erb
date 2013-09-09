@@ -1,16 +1,30 @@
 <% if session[:login] %>
-		<h1> <%= session[:user_name] %></h1>
+	<h1> <%= session[:user_name] %></h1>
 <% else if flash[:msg] %>
-	<h1><%= flash[:msg] %></h1>
+		<h1><%= flash[:msg] %></h1>
 	<% else %>
-		<%= form_tag('/login',method: "post") do %>
-			<%= label_tag :user_name %>
-			<%= text_field_tag :user_name %>
-			<br />
-			<%= label_tag :user_pwd %>
-			<%= password_field_tag :user_pwd %>
-			<br />
-			<%= submit_tag "Login" ,class: "btn"%>
-		<% end %>
+		<div id="login_box">
+			<div id="portrait">
+				<img src="assets/psbe.png" alt="">	
+			</div>
+			<%= form_tag('/login',method: "post") do %>
+			<div class="clearfix"></div>
+				<div class="input-prepend">
+					<span class="add-on"><img src="/assets/user.png" class="icon" alt=""></span>
+					<input type="text" id="user_name" name="user_name" placeholder="User name">
+				</div>
+				<div class="input-prepend">
+					<span class="add-on"><img src="/assets/key.png" class="icon" alt=""></span>
+					<input type="password" id="user_pwd" name="user_pwd" placeholder="*********">
+				</div>
+				<div>
+					<%= submit_tag "Login" ,class: "btn btn-primary"%>
+				</div>
+			<% end %>
+		</div>
+		<div id="login_bottom_box">
+			Not a registered user yet?
+			<%= link_to 'sign up now',:register %>
+		</div>
 	<% end %>
 <% end %>

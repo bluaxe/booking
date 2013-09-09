@@ -1,12 +1,18 @@
-<%= form_for @user, url:{action: "create"} do |f| %>
-	<%= f.label :user_name %>
-	<%= f.text_field :user_name %>
-	<br />
-	<%= f.label :user_pwd %>
-	<%= f.password_field :user_pwd %>
-	<br />
-	<%= f.label :email%>
-	<%= f.text_field :user_mail%>
-	<br />
-	<%= f.submit "Register" ,class: "btn"%>
-<% end %>
+<div id="reg_box">
+	<%= form_for @user, url:{action: "create"} do |f| %>
+		<%= f.label :user_name %>
+		<%= f.text_field :user_name %>
+		<br />
+		<%= f.label :user_pwd %>
+		<%= f.password_field :user_pwd %>
+		<br />
+		<%= f.label :email%>
+		<%= f.text_field :user_mail%>
+		<br />
+		<%= f.submit "Register" ,class: "btn"%>
+	<% end %>
+</div>
+<div id="reg_bottom_box">
+			You've registered?
+			<%= link_to 'Login here',:register %>
+</div>

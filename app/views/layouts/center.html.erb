@@ -7,15 +7,11 @@
   <%= javascript_include_tag "application", "data-turbolinks-track" => true %>
   <%= csrf_meta_tags %>
 </head>
-<body>
+<body class="bg">
 
 <%= render 'layouts/nav' %>
-<div class="container-fluid">
-	<div class="row-fluid">
-		<div class="span2">
-			<%= yield :left_bar %>
-		</div>
-		<div class="span9">
+<div class="container">
+		<div id="content">
 			<%= yield %>
 		</div>
 	</div>
