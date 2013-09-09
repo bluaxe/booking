@@ -1,5 +1,5 @@
 class UserController < ApplicationController
-	before_action :find_user , only: [:show, :destroy, :send_mail]
+	before_action :find_user , only: [:show, :destroy]
 
 	def new 
 		@user = User.new
@@ -7,12 +7,18 @@ class UserController < ApplicationController
 
 	def create 
 		@user = User.new(user_params)
-		if @user.save
-			flash[:reg]=1
-		else 
-			flash[:reg]=0
+		@u = User.find_by_user_name(@user.user_name)
+		if @u 
+			flash.now[:msg]='User Name already Exists.'
+		else
+			@user.verified = UserController.rand_str(40)
+			send_verify_mail
+			if @user.save
+				redirect_to '/user/'+@user.id.to_s
+			else 
+				flash.now[:msg]='Saving Error'
+			end
 		end
-		redirect_to '/user/'+@user.id.to_s
 	end
 	
 	def login
@@ -55,10 +61,18 @@ class UserController < ApplicationController
 		redirect_to root_url 
 	end
 
-	def send_mail
-		UserMailer.welcome_email(@user).deliver
-		redirect_to '/user/'+@user.id.to_s
+	def verify
+		@code = params[:code]
+		@user = User.find_by_verified(@code)
+		if @user!=nil
+			@user.verified = "yes"
+			@user.save
+			flash.now[:verified]= 1
+		else 
+			flash.now[:verified]= 0
+		end
 	end
+
 
 private
 	def user_params
@@ -67,6 +81,20 @@ private
 
 	def find_user
 		@user = User.find(params[:id])
+	end
+
+	def self.rand_str(len)
+		str = ""
+		chars = ("A".."Z").to_a + ("a".."z").to_a + ("0".."9").to_a
+		1.upto(len){
+			|i| 	
+			str << chars[rand(chars.size-1)]
+		}
+		return str
+	end
+
+	def send_verify_mail
+		UserMailer.welcome_email(@user).deliver
 	end
 
 end

@@ -1,0 +1,5 @@
+<% if flash[:verified]==1 %>
+	<h1><%= @user.user_name %> You have successfully verified your mail!</h1>
+<% else %>
+	<h1>Sorry, verify code is not correct</h1>
+<% end -%>

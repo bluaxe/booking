@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20130906161211) do
+ActiveRecord::Schema.define(version: 20130907172214) do
 
   create_table "orders", force: true do |t|
     t.integer  "user_id"
@@ -72,7 +72,7 @@ ActiveRecord::Schema.define(version: 20130906161211) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.integer  "admin"
-    t.integer  "verified"
+    t.string   "verified"
   end
 
 end

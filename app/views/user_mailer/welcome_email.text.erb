@@ -1,2 +1,7 @@
 welcome to demo!
-<%= debug(@user) %>
+
+You have just registerd on our website and your user name is <%= @user.user_name %>
+
+If this is done by you, please click the following link to verify your mail.
+<a href="<%= @url %>
+	"><%= @url %></a>

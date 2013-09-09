@@ -23,7 +23,7 @@ post '/order/create', to: 'order#create'
 get '/admin' , to: 'admin#index'
 get '/admin/grant/:id', to: 'admin#grant'
 
-get '/send/:id', to: 'user#send_mail'
+get '/verify/:code', to: 'user#verify'
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

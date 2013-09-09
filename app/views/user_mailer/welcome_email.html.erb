@@ -6,7 +6,11 @@
 </head>
 <body>
 	<h1>
-	<%= debug(@user) %>		
+		You have just registerd on our website and your user name is <%= @user.user_name %>
 	</h1>
+	<h1>
+		If this is done by you, please click the following link to verify your mail.
+	</h1>
+	<%= link_to @url,@url %>
 </body>
 </html>
