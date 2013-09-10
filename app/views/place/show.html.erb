@@ -1,12 +1,15 @@
 <%= render "leftbar" %>
-<div >
+<div id="place_info">
 	<h1><%= @place.name%></h1>
-	<%= @place.phone%>
 	<%= @place.info%>
+	<br>
+	<%= @place.phone%>
 	<br />
-	<%= link_to "Upload a photo", '/place/photo/'+@place.id.to_s%>
 	<img src=<%= "/uploads/"+@place.photo_path %> alt="" class="img-circle" >
+	<br>
+	<%= link_to "Upload a photo", '/place/photo/'+@place.id.to_s%>
 </div >
+<div class="clearfix"></div>
 
 <hr />
 

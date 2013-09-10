@@ -15,4 +15,10 @@
 
 .place_box{
 	@include box(150px,0.9);
+	height:90px;
+}
+
+#place_info{
+
+	@include box(300px,0.9);
 }

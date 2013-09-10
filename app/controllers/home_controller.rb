@@ -1,6 +1,12 @@
 class HomeController < ApplicationController
 	def index
 		@places = Place.all
+		@places.each do |p|
+			if p.photo_path == nil 
+				p.photo_path = "common.png"
+			end
+		end
+		render layout: 'center'
 	end
 
 	def place_detail

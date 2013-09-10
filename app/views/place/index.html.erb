@@ -1,5 +1,4 @@
-<% content_for :left_bar do %>
-<%= link_to 'New Place', new_place_url%>
-<% end %>
-
 <%= render partial: "place", collection: @places %>
+<div class="place_box" >
+<%= link_to 'New Place', new_place_url%>
+</div >

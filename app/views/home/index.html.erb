@@ -1,5 +1,12 @@
 <% @places.each do |f| %>
-	<div class="span1" >
-	<%= link_to f.name,'/p/'+f.id.to_s %>
+	<div class="home_place_box" >
+		<a href=<%= "/p/"+f.id.to_s %> >
+			<img src=<%= '/uploads/'+f.photo_path %> alt="" class="img-circle">
+			<div class="title">
+				<%= f.name %>
+			</div>
+		</a>
+		<div class="clearfix"></div>
 	</div>
 <% end %>
+<div class="clearfix"></div>
