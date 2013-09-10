@@ -1,0 +1,6 @@
+<%= render "leftbar" %>
+<h1><%= @place.name %></h1>
+<%= form_tag('/place/upload/'+@place.id.to_s, multipart: true, method: "post") do %>
+	<%= file_field_tag 'photo' %>
+	<%= submit_tag "Upload" ,class: "btn" %>
+<% end -%>

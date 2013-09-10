@@ -1,15 +1,11 @@
-<% content_for :left_bar do %>
-<ul class="nav nav-tabs nav-stacked">
-	<% @places.each do |p| %>
-	<li><%= link_to p.name,'/place/'+p.id.to_s %></li>
-	<% end %>
-</ul>
-<% end %>
+<%= render "leftbar" %>
 <div >
 	<h1><%= @place.name%></h1>
 	<%= @place.phone%>
 	<%= @place.info%>
 	<br />
+	<%= link_to "Upload a photo", '/place/photo/'+@place.id.to_s%>
+	<img src=<%= "/uploads/"+@place.photo_path %> alt="" class="img-circle" >
 </div >
 
 <hr />

@@ -9,6 +9,8 @@ post '/login' , to: 'user#login'
 resources :user
 
 get '/placemanage' , to: 'place#index'
+get '/place/photo/:id', to: 'place#photo'
+post '/place/upload/:id', to: 'place#upload'
 resources :place,:room
 
 post '/timetable' ,to: 'time_table#update'

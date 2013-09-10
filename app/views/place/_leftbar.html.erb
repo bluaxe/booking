@@ -1,0 +1,7 @@
+<% content_for :left_bar do %>
+<ul class="nav nav-tabs nav-stacked">
+	<% @places.each do |p| %>
+	<li><%= link_to p.name,'/place/'+p.id.to_s %></li>
+	<% end %>
+</ul>
+<% end %>
