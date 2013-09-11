@@ -17,3 +17,6 @@
 
 #Ignore all uploads
 /public/uploads/2*
+
+#Ignore compiled assets 
+/public/assets/*

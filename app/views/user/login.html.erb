@@ -5,16 +5,16 @@
 	<% else %>
 		<div id="login_box">
 			<div id="portrait">
-				<img src="assets/psbe.png" alt="">	
+				<%= image_tag "psbe.png" %>
 			</div>
 			<%= form_tag('/login',method: "post") do %>
 			<div class="clearfix"></div>
 				<div class="input-prepend">
-					<span class="add-on"><img src="/assets/user.png" class="icon" alt=""></span>
+					<span class="add-on"><img src="<%=  asset_path 'user.png' %>" class="icon" alt=""></span>
 					<input type="text" id="user_name" name="user_name" placeholder="User name">
 				</div>
 				<div class="input-prepend">
-					<span class="add-on"><img src="/assets/key.png" class="icon" alt=""></span>
+					<span class="add-on"><img src="<%=  asset_path 'key.png' %>" class="icon" alt=""></span>
 					<input type="password" id="user_pwd" name="user_pwd" placeholder="*********">
 				</div>
 				<div>
