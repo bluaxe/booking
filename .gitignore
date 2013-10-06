@@ -20,3 +20,7 @@
 
 #Ignore compiled assets 
 /public/assets/*
+
+#Ignore files containing passwords
+/config/database.yml
+/config/environments/development.rb
